@@ -7,7 +7,7 @@ TrackMe application" />
 <meta name="author" content="Jerome Goldstein" />
 <meta name="viewport" content="width=device-width, initialscale=
 1.0">
-<meta name="google-signin-client_id" content="">
+<meta name="google-signin-client_id" content="474899306713-i5jjpa4mg8ppbcfqcpsehn430q727epi.apps.googleusercontent.com">
 <title>TrackMe</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
@@ -17,8 +17,13 @@ TrackMe application" />
 
     <h1>Login</h1>
     <hr/>
+
     <div class="col-sm-6 col-sm-offset-3">
 
+      <hr/>
+      <p>Client side sign in with google</p>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<!--
       <div class="form-group text-center">
         <label for="email">email:</label>
         <input type="email" id="email_address" class="form-control">
@@ -30,20 +35,18 @@ TrackMe application" />
       <button class="btn btn-danger" type="submit"  id="submit_login">Login</button>
       <p>Don't have an account? <a href="registration.html">Create one here</a></p>
       </div>
-
+-->
   </div>
 
   </div>
   <div class="container">
-    <hr/>
-    <p>Client side sign in with google</p>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
 
     <hr/>
     <!--button><a href="/auth/google">Sign In with Google</a></button-->
-    <p>Oauth sign in with google</p>
+  <!--  <p>Oauth sign in with google</p>
     <Button><a href="/auth/google">Oauth Sign In with Google</a></Button>
-    <hr/>
+    <hr/>-->
     <a href="#" onclick="signOut();">Sign out</a>
   </div>
     <script src="https://apis.google.com/js/platform.js" async defer></script>

@@ -13,8 +13,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-})*/;
-
+});*/
+/*
 passport.use(new GoogleStrategy({
     clientID: ,
     clientSecret:
@@ -33,10 +33,9 @@ app.get('/auth/google',
     passport.authenticate('google', { failureRedirect: '/login.html' }),
     function(req, res) {
       res.redirect('/register.html');
-    });
+    });*/
 /*app.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));*/
-
 app.get('/', function (req, res) {
 res.sendFile(`${base}/device_list.html`);
 });
