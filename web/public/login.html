@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="A frontend dashboard for the
+TrackMe application" />
+<meta name="author" content="Jerome Goldstein" />
+<meta name="viewport" content="width=device-width, initialscale=
+1.0">
+<meta name="google-signin-client_id" content="">
+<title>TrackMe</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+
+    <h1>Login</h1>
+    <hr/>
+    <div class="col-sm-6 col-sm-offset-3">
+
+      <div class="form-group text-center">
+        <label for="email">email:</label>
+        <input type="email" id="email_address" class="form-control">
+        <label for="password">password:</label>
+        <input type="password" id="password" class="form-control">
+      </div>
+
+      <div>
+      <button class="btn btn-danger" type="submit"  id="submit_login">Login</button>
+      <p>Don't have an account? <a href="registration.html">Create one here</a></p>
+      </div>
+
+  </div>
+
+  </div>
+  <div class="container">
+    <hr/>
+    <p>Client side sign in with google</p>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <hr/>
+    <!--button><a href="/auth/google">Sign In with Google</a></button-->
+    <p>Oauth sign in with google</p>
+    <Button><a href="/auth/google">Oauth Sign In with Google</a></Button>
+    <hr/>
+    <a href="#" onclick="signOut();">Sign out</a>
+  </div>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <script src="app.js"></script>
+    <script>
+    function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+
+function signOut() {
+   var auth2 = gapi.auth2.getAuthInstance();
+   auth2.signOut().then(function () {
+     console.log('User signed out.');
+   });
+ }
+    </script>
+  <div id="footer"></div>
+</body>
+</html>
