@@ -12,33 +12,8 @@
 </head>
 <body>
   <div id="navbar"></div>
-  <div class="container-fluid">
-  <div class="col-sm-12">
-    <div class="text-center">
-    <h1>Login</h1>
-    <hr/>
+  <div id="map"></div>
 
-    <div id="center_google_btn">
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </div>
-      <!--
-      <div class="form-group text-center">
-      <label for="email">email:</label>
-      <input type="email" id="email_address" class="form-control">
-      <label for="password">password:</label>
-      <input type="password" id="password" class="form-control">
-    </div>
-
-    <div>
-    <button class="btn btn-danger" type="submit"  id="submit_login">Login</button>
-    <p>Don't have an account? <a href="registration.html">Create one here</a></p>
-  </div>
--->
-
-
-</div>
-</div>
-</div>
 
 
   <hr/>
@@ -48,27 +23,22 @@
   <hr/>-->
   <div type="button" class="btn btn-primary"><a href="#" onclick="signOut();">Sign out</a></div>
 
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+  </script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 <script src="app.js"></script>
-<script>
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-
-function signOut() {
-  var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
-    console.log('User signed out.');
-  });
-}
-</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALpDcCS7Xe7VeSu6HPdcDVbDv3QQoyWlM&callback=initMap"
+   async defer></script>
 <div id="footer"></div>
 </body>
 </html>

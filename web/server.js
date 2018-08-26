@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+//const passport = require('passport');
+//const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 const port = process.env.PORT || 3000;
 const base = `${__dirname}/public`;
