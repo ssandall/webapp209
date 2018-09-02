@@ -40,7 +40,9 @@ app.get('/', function (req, res) {
 res.sendFile(`${base}/device_list.html`);
 });
 
-app.listen(port, () => {
+app.listen(port, (req, res) => {
+
+res.sendFile(`${base}/Stability.html`);
 console.log(`listening on port ${port}`);
 });
 

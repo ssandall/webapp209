@@ -15,3 +15,45 @@ height: auto;
 margin: auto;
 
 }
+
+#jumbotron_stability
+{
+
+    height: 300px;
+
+}
+
+.montserrat_text{
+  font-family: 'Montserrat', sans-serif;
+}
+
+#stability_main_title
+{
+
+  font-size: 40px;
+
+}
+
+#stability_jumbotron_text
+{
+  font-size: 26px;
+}
+
+#stability_jumbotron_text_second_header
+{
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+#stability_jumbotron_text_supportedby_text
+{
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+#deakin_logo_image
+{
+
+    margin-top: 16px;
+
+}
