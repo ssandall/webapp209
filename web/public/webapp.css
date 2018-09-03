@@ -20,6 +20,8 @@ margin: auto;
 {
 
     height: 300px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
 
 }
 
@@ -55,5 +57,21 @@ margin: auto;
 {
 
     margin-top: 16px;
+
+}
+
+#app_do_text
+{
+
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+#para_app_do
+{
+
+  margin-top: 10px;
+  font-size: 12px;
 
 }
