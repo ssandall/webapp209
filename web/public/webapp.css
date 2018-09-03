@@ -4,17 +4,22 @@ html, body {
   padding: 0;
 }
 
-#map {
-  height: 100%;
-}
 
-#center_google_btn{
+
+
+/******************** Login.html ***************************/
+
+#center_google_btn
+{
 
 width: 200px;
 height: auto;
 margin: auto;
 
 }
+
+
+/**************** Stability.html **********************/
 
 #jumbotron_stability
 {
@@ -73,5 +78,76 @@ margin: auto;
 
   margin-top: 10px;
   font-size: 12px;
+
+}
+
+/********************* Map Pag ************************/
+
+#map
+{
+
+  height: 1000px;
+  width: 100%;
+  /*position: absolute; */
+
+}
+
+#wrapper
+{
+
+   position: relative;
+   height: 100%;
+   width: 100%;
+
+}
+
+/************************ Popup ***************************/
+
+#pop_up{
+  display: none;
+  height:400px;
+  width:300px;
+  background: #f8ed62;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+.pop_up_text_space
+{
+
+    padding-top: 10px;
+
+}
+
+#closeButton{
+
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  margin-top:5px;
+
+}
+
+#closeIcon
+{
+
+   width: 40px;
+   height: 40px;
+   background-image: url('images/close4.png');
+   background-repeat: no-repeat;
+   border: none;
+
+}
+
+#pop_up_text
+{
+
+    font-size: 11px;
 
 }

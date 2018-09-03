@@ -8,32 +8,86 @@
   <meta name="google-signin-client_id" content="474899306713-i5jjpa4mg8ppbcfqcpsehn430q727epi.apps.googleusercontent.com">
   <title>Stability</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="webapp.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="webapp.css">
 </head>
 <body>
   <div id="navbar"></div>
-  <div id="map"></div>
+  <div id="wrapper">
+
+    <div id="map">
+    </div>
+
+  </div>
+
+  <div id="pop_up">
+    <div id="closeButton">
+      <button id="closeIcon" onclick="close_pop_up()" ></button>
+    </div>
+    <div class="text-center">
+    <div>
+        <p class="montserrat_text"><b>Person name:</b></p>
+        <div id="personName" class="montserrat_tex pop_up_text_space"></div>
+    </div>
+    <div>
+        <p class="montserrat_text pop_up_text_space"><b>How many times they have started and stopped today:</b></p>
+    </div>
+    <div>
+          <p class="montserrat_text pop_up_text_space"><b>Accelerometer: </b></p>
+    </div>
+    <div>
+      <p class="montserrat_tex pop_up_text_space"><b>Gyroscope: </b></p>
+    </div>
+  </div>
 
 
+  </div>
 
   <hr/>
 
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+
   <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
-  </script>
+
+  /* Initialiser for the mpa */
+
+  var map;
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8
+    });
+  }
+
+
+
+</script>
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 <script src="app.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALpDcCS7Xe7VeSu6HPdcDVbDv3QQoyWlM&callback=initMap"
-   async defer></script>
+async defer></script>
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyDa2pG2ZliMP9oCyNqNpPCbu7INDej81eU",
+  authDomain: "webapp209-214206.firebaseapp.com",
+  databaseURL: "https://webapp209-214206.firebaseio.com",
+  projectId: "webapp209-214206",
+  storageBucket: "webapp209-214206.appspot.com",
+  messagingSenderId: "474899306713"
+};
+
+firebase.initializeApp(config);
+var db = firebase.firestore();
+var storage = firebase.storage();
+var storageRef = storage.ref();
+
+readInMobility();
+</script>
 <div id="footer"></div>
 </body>
 </html>
