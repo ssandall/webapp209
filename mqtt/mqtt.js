@@ -3,8 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Device = require('./models/device');
-const randomCoordinates = require('random-coordinates');
-const rand = require ('random-int');
+//const randomCoordinates = require('random-coordinates');
+//const rand = require ('random-int');
 
 const app = express();
 const { URL, USER, PASSWORD } = process.env;
@@ -31,7 +31,7 @@ const client = mqtt.connect(URL, {
 
 
 client.on('connect', () => {
-    client.subscribe('/sensorData');
+    client.subscribe('/map');
     console.log('mqtt connected');
 });
 
@@ -50,6 +50,10 @@ client.on('connect', () => {
 */
 
 client.on('message', (topic, message) => {
+  console.log("published");
+  const data = JSON.parse(message);
+  console.log("data is, ", data);
+  /*
   if (topic == '/sensorData') {
     const data = JSON.parse(message);
     console.log("data is, ", data);
@@ -69,7 +73,7 @@ client.on('message', (topic, message) => {
         }
       });
     });
-  }
+  }*/
 });
 
 /**
@@ -85,6 +89,7 @@ client.on('message', (topic, message) => {
 *
 *
 */
+/*
 app.put('/sensor-data', (req, res) => {
   console.log("does this work?");
   console.log(req.body);
@@ -100,8 +105,8 @@ app.put('/sensor-data', (req, res) => {
     res.send('published new message');
   });
 });
-
-
+*/
+/*
 app.post('/send-command', (req, res) => {
   const { deviceId, command } = req.body;
   const topic = `/command/${deviceId}`;
@@ -110,7 +115,8 @@ app.post('/send-command', (req, res) => {
     res.send(topic);
   });
 });
-
+*/
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
+//  console.log("published");
 });
