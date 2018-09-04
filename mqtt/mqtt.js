@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Device = require('./models/device');
+//const API_URL = 'https://217349255-sit-209.now.sh/api';
 //const randomCoordinates = require('random-coordinates');
 //const rand = require ('random-int');
 
@@ -53,6 +54,7 @@ client.on('message', (topic, message) => {
   console.log("published");
   const data = JSON.parse(message);
   console.log("data is, ", data);
+
   /*
   if (topic == '/sensorData') {
     const data = JSON.parse(message);

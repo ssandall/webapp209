@@ -88,6 +88,19 @@ var storageRef = storage.ref();
 
 readInMobility();
 </script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io('http://localhost:3000');
+
+  socket.on("connect", function () {
+    console.log("Connected! No way");
+});
+
+socket.on("location", function(location) {
+        console.log(location);
+        updateMapMarker(location);
+    });
+</script>
 <div id="footer"></div>
 </body>
 </html>

@@ -377,6 +377,31 @@ function addMobilityMarkerFirstTime() {
   }
 }
 
+function updateMapMarker(location)
+{
+  var latFloat, lngFloat;
+  latFloat = parseFloat(location.lat);
+  lngFloat = parseFloat(location.lng);
+
+  console.log(latFloat);
+  console.log(lngFloat);
+
+  var marker_position = {lat: latFloat, lng: lngFloat};
+  var marker = new google.maps.Marker({
+    position: marker_position,
+    map: map,
+    icon: 'images/personicon.png',
+    customData: mobilityArray[mobilityArray.length]
+  });
+
+  mobilityMarkers.push(marker);
+
+  marker.addListener('click', function() {
+
+    open_pop_up(this.customData);
+  });
+}
+
 function open_pop_up(mobility_object){
 
 
@@ -407,4 +432,18 @@ function readInMobility()
 
     addMobilityMarkerFirstTime();
   });
+}
+
+function deleteMarker(){
+
+    if(mobilityMarkers.length != 0)
+    {
+      for (i = 0; i < mobilityMarkers.length; i++) {
+
+        mobilityMarkers[i].setMap(null);
+
+     }
+
+      mobilityMarkers.length = 0;
+    }
 }
