@@ -9,7 +9,7 @@ const {OAuth2Client} = require('google-auth-library');
 
 
 const API_URL = 'https://217349255-sit-209.now.sh/api';
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
 
 const { URL, USER, PASSWORD } = process.env;
 const port = process.env.PORT || 3000;
