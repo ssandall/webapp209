@@ -5,7 +5,12 @@ html, body {
 }
 
 
+/********************* Navbar.html **************************/
 
+#logout_button
+{
+  margin-right: 20px;
+}
 
 /******************** Login.html ***************************/
 
@@ -18,7 +23,19 @@ margin: auto;
 
 }
 
+#register_user
+{
 
+  margin-top: 100px;
+
+}
+
+#jumbotron_login
+{
+
+    
+
+}
 /**************** Stability.html **********************/
 
 #jumbotron_stability
@@ -80,6 +97,23 @@ margin: auto;
   font-size: 12px;
 
 }
+
+#login_btn
+{
+  margin-top: 20px;
+  height:30px;
+  font-size: 11px;
+}
+/*
+#google_btn{
+  display: block;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+*/
+
 
 /********************* Map Pag ************************/
 

@@ -1,22 +1,19 @@
 const express = require('express');
 const app = express();
 const mqtt = require('mqtt');
+const request = require('request');
 const bodyParser = require('body-parser');
 const server = require('http').createServer(app);
 const  io = require('socket.io')(server);
+const {OAuth2Client} = require('google-auth-library');
 
 
-//server.listen(3000);
-//const passport = require('passport');
-//const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const API_URL = 'https://217349255-sit-209.now.sh/api';
 server.listen(3000);
-
 
 const { URL, USER, PASSWORD } = process.env;
 const port = process.env.PORT || 3000;
 const base = `${__dirname}/public`;
-
-
 
 app.use(express.static('public'));
 
@@ -66,39 +63,11 @@ client.on('message', (topic, message) => {
 });
 
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-/*
-passport.use(new GoogleStrategy({
-    clientID: ,
-    clientSecret:
-    callbackURL: 'http://localhost:3000/auth/google/callback'
-  },
-  function(accessToken, refreshToken, profile, done) {
-    console.log(accessToken);
-    console.log(profile);
-  }
-));
-
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
-
-  app.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/login.html' }),
-    function(req, res) {
-      res.redirect('/register.html');
-    });*/
-/*app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));*/
 
 app.get('/', function (req, res) {
 res.sendFile(`${base}/device_list.html`);
 });
-/*
-app.listen(port, (req, res) => {
+/*app.listen(port, (req, res) => {
 
 console.log(`listening on port ${port}`);
 });
@@ -114,3 +83,47 @@ app.post('/login.html', function (req, res) {
 app.get('*', (req, res) => {
 res.sendFile(`${base}/404.html`);
 });
+
+app.post('/auth', function (req, res) {
+  //console.log(req.body);
+  console.log("works");
+const token = req.body.idtoken;
+const CLIENT_ID = "474899306713-i5jjpa4mg8ppbcfqcpsehn430q727epi.apps.googleusercontent.com"
+const client = new OAuth2Client(CLIENT_ID);
+async function verify() {
+  const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: "474899306713-i5jjpa4mg8ppbcfqcpsehn430q727epi.apps.googleusercontent.com",  // Specify the CLIENT_ID of the app that accesses the backend
+      // Or, if multiple clients access the backend:
+      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+  });
+  const payload = ticket.getPayload();
+  const userid = payload['sub'];
+  const email = payload['email'];
+  console.log(userid);
+  console.log(email);
+  sendToDb(userid);
+  //res.redirect('https://217349255-sit-209.now.sh/api/auth');
+  // If request specified a G Suite domain:
+  //const domain = payload['hd'];
+}
+verify().catch(console.error);
+})
+
+function sendToDb(userid, email)
+{
+
+  console.log("here");
+/*
+  request.post({
+     url:'https://217349255-sit-209.now.sh/api/auth', function(err, httpResponse, body) {
+       console.log(err);
+
+       if (err) {
+         return console.error('upload failed:', err);
+       }
+       console.log('Upload successful!  Server responded with:', body);
+     }
+   });
+*/
+}
