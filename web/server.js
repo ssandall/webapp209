@@ -114,16 +114,5 @@ function sendToDb(userid, email)
 {
 
   console.log("here");
-/*
-  request.post({
-     url:'https://217349255-sit-209.now.sh/api/auth', function(err, httpResponse, body) {
-       console.log(err);
 
-       if (err) {
-         return console.error('upload failed:', err);
-       }
-       console.log('Upload successful!  Server responded with:', body);
-     }
-   });
-*/
 }
